@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "极简翻译 self",
+  "version": "0.1.0",
+  "description": "划词翻译, 英汉互译, 极简",
+  "icons": {
+    "16": "icons/icon_16.png",
+    "48": "icons/icon_48.png",
+    "128": "icons/icon_128.png"
+  },
+  "background": {
+    "service_worker": "popup/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["popup/content_script.js"],
+      "all_frames": true
+    },
+    {
+      "matches": ["*://*.deepl.com/*"],
+      "js": ["popup/deepl_injector.js"],
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html"
+  }
+}
